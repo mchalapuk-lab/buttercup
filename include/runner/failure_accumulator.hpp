@@ -22,27 +22,7 @@ enum class fail_type {
 
 typedef std::tuple<std::string, fail_type> failure;
 
-result_handlers failure_accumulator(std::list<failure> &failures) {
-  auto addUnary = [&failures] (fail_type type) {
-    return [&failures, type] (std::string name) {
-      failures.push_back(std::make_tuple(name, type));
-    };
-  };
-  auto addBinary = [&failures] (fail_type type) {
-    return [&failures, type] (std::string name, std::string message) {
-      failures.push_back(std::make_tuple(name + ": " + message, type));
-    };
-  };
-
-  using namespace std::placeholders;
-  return result_handlers {
-    [] (std::string) {},
-    addBinary(fail_type::ASSERTION),
-    addBinary(fail_type::EXCEPTION),
-    addUnary(fail_type::TIMEOUT),
-    addUnary(fail_type::UNKNOWN),
-  };
-}
+result_handlers failure_accumulator(std::list<failure> &);
 
 } // namespace runner
 } // namespace buttercup

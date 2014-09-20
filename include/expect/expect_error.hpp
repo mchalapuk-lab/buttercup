@@ -1,6 +1,9 @@
 // licence: GPLv3
 // author: Maciej Chałapuk
 
+#ifndef BUTTERCUP_EXPECT_EXPECT_ERROR_HPP_
+#define BUTTERCUP_EXPECT_EXPECT_ERROR_HPP_
+
 #include "model/functions.hpp"
 
 namespace buttercup {
@@ -12,4 +15,6 @@ struct expect_error : std::runtime_error {
 
 } // namespace expect
 } // namespace buttercup
+
+#endif // include guard
 

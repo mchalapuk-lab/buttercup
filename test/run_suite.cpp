@@ -7,11 +7,11 @@
 
 #include "test/stub_wait_notify.hpp"
 
-#include <iostream>
+#include "gtest/gtest.h"
 
 using namespace buttercup;
 
-int main() {
+TEST(runner_run_suite, simple_test) {
   std::list<runner::failure> failures;
   
   model::suite suite {
